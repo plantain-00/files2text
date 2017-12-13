@@ -6,16 +6,8 @@ import * as packageJson from "../package.json";
 
 let suppressError = false;
 
-function printInConsole(message: any) {
-    if (message instanceof Error) {
-        message = message.message;
-    }
-    // tslint:disable-next-line:no-console
-    console.log(message);
-}
-
 function showToolVersion() {
-    printInConsole(`Version: ${packageJson.version}`);
+    console.log(`Version: ${packageJson.version}`);
 }
 
 async function executeCommandLine() {
@@ -90,7 +82,7 @@ async function executeCommandLine() {
 
     function print(node: Node, depth: number, isEnd: boolean) {
         const head = depth === 0 ? "" : "│  ".repeat(depth - 1) + (isEnd ? "└─ " : "├─ ");
-        printInConsole(head + path.basename(node.name));
+        console.log(head + path.basename(node.name));
         if (node.children) {
             for (let i = 0; i < node.children.length; i++) {
                 print(node.children[i], depth + 1, i === node.children.length - 1);
@@ -104,9 +96,13 @@ async function executeCommandLine() {
 }
 
 executeCommandLine().then(() => {
-    printInConsole("files2text success.");
+    console.log("files2text success.");
 }, error => {
-    printInConsole(error);
+    if (error instanceof Error) {
+        console.log(error.message);
+    } else {
+        console.log(error);
+    }
     if (!suppressError) {
         process.exit(1);
     }
