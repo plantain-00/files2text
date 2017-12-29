@@ -1,3 +1,5 @@
+# files2text
+
 [![Dependency Status](https://david-dm.org/plantain-00/files2text.svg)](https://david-dm.org/plantain-00/files2text)
 [![devDependency Status](https://david-dm.org/plantain-00/files2text/dev-status.svg)](https://david-dm.org/plantain-00/files2text#info=devDependencies)
 [![Build Status: Linux](https://travis-ci.org/plantain-00/files2text.svg?branch=master)](https://travis-ci.org/plantain-00/files2text)
@@ -5,14 +7,13 @@
 [![npm version](https://badge.fury.io/js/files2text.svg)](https://badge.fury.io/js/files2text)
 [![Downloads](https://img.shields.io/npm/dm/files2text.svg)](https://www.npmjs.com/package/files2text)
 
-# files2text
 A CLI tool and library to get text structure of files in a folder.
 
-#### install
+## install
 
 `yarn add files2text -g`
 
-#### usage
+## usage
 
 run `files2text . -e node_modules -e .git`
 
@@ -20,7 +21,7 @@ key | description
 --- | ---
 -e,--exclude | directories, eg: "node_modules,.git", repeatable
 
-```
+```txt
 .
 ├─ .github
 │  ├─ ISSUE_TEMPLATE.md
