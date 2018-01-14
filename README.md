@@ -11,7 +11,7 @@ A CLI tool and library to get text structure of files in a folder.
 
 ## install
 
-`yarn add files2text -g`
+`yarn global add files2text`
 
 ## usage
 
