@@ -6,11 +6,11 @@ import * as packageJson from '../package.json'
 
 let suppressError = false
 
-function showToolVersion () {
+function showToolVersion() {
   console.log(`Version: ${packageJson.version}`)
 }
 
-async function executeCommandLine () {
+async function executeCommandLine() {
   const argv = minimist(process.argv.slice(2), { '--': true })
 
   const showVersion = argv.v || argv.version
@@ -39,7 +39,7 @@ async function executeCommandLine () {
 
   const statAsync = util.promisify(fs.stat)
   const readdirAsync = util.promisify(fs.readdir)
-  async function readAsync (node: Node): Promise<boolean> {
+  async function readAsync(node: Node): Promise<boolean> {
     const directoryName = path.basename(node.name)
     if (excludedDirectories.some(d => directoryName === d)) {
       return false
@@ -80,7 +80,7 @@ async function executeCommandLine () {
     }
   }
 
-  function print (node: Node, depth: number, isEnd: boolean) {
+  function print(node: Node, depth: number, isEnd: boolean) {
     const head = depth === 0 ? '' : '│  '.repeat(depth - 1) + (isEnd ? '└─ ' : '├─ ')
     console.log(head + path.basename(node.name))
     if (node.children) {
