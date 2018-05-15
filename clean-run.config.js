@@ -9,6 +9,6 @@ module.exports = {
   ],
   postScript: [
     'cd "[dir]" && yarn --production',
-    '[dir]/bin/files2text . -e node_modules -e .git'
+    'node [dir]/dist/index.js . -e node_modules -e .git'
   ]
 }
