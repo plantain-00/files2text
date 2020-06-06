@@ -1,6 +1,6 @@
-const { checkGitStatus } = require('clean-scripts')
+import { checkGitStatus } from 'clean-scripts'
 
-const tsFiles = `"src/**/*.ts" "spec/**/*.ts"`
+const tsFiles = `"src/**/*.ts"`
 const jsFiles = `"*.config.js"`
 
 module.exports = {
@@ -17,9 +17,7 @@ module.exports = {
     typeCoverage: 'type-coverage -p src --strict'
   },
   test: [
-    'tsc -p spec',
-    'jasmine',
-    'clean-release --config clean-run.config.js',
+    'clean-release --config clean-run.config.ts',
     () => checkGitStatus()
   ],
   fix: `eslint --ext .js,.ts,.tsx ${tsFiles} ${jsFiles} --fix`
