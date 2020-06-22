@@ -10,13 +10,38 @@ function showToolVersion() {
   console.log(`Version: ${packageJson.version}`)
 }
 
+function showHelp() {
+  console.log(`Version ${packageJson.version}
+Syntax:   files2text [options] [file...]
+Examples: files2text . -e node_modules -e .git
+Options:
+ -h, --help                                         Print this message.
+ -v, --version                                      Print the version
+ -e, --exclude                                      Directories, eg: "node_modules,.git", repeatable
+`)
+}
+
 async function executeCommandLine() {
-  const argv = minimist(process.argv.slice(2), { '--': true })
+  const argv = minimist(process.argv.slice(2), { '--': true }) as unknown as {
+    v?: unknown
+    version?: unknown
+    h?: unknown
+    help?: unknown
+    suppressError: boolean
+    e: string | string[]
+    exclude: string | string[]
+    _: string[]
+  }
 
   const showVersion = argv.v || argv.version
   if (showVersion) {
     showToolVersion()
     return
+  }
+
+  if (argv.h || argv.help) {
+    showHelp()
+    process.exit(0)
   }
 
   suppressError = argv.suppressError

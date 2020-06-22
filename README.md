@@ -21,6 +21,8 @@ run `files2text . -e node_modules -e .git`
 key | description
 --- | ---
 -e,--exclude | directories, eg: "node_modules,.git", repeatable
+-h,--help | Print this message.
+-v,--version | Print the version
 
 ```txt
 .
