@@ -47,5 +47,8 @@
   },
   "bin": {
     "files2text": "bin/files2text"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
