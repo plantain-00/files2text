@@ -109,20 +109,21 @@ async function executeCommandLine() {
     const head = depth === 0 ? '' : '│  '.repeat(depth - 1) + (isEnd ? '└─ ' : '├─ ')
     console.log(head + path.basename(node.name))
     if (node.children) {
-      for (let i = 0; i < node.children.length; i++) {
-        print(node.children[i], depth + 1, i === node.children.length - 1)
-      }
+      const children = node.children
+      children.forEach((c, i) => {
+        print(c, depth + 1, i === children.length - 1)
+      })
     }
   }
 
-  for (let i = 0; i < result.length; i++) {
-    print(result[i], 0, i === result.length - 1)
-  }
+  result.forEach((r, i) => {
+    print(r, 0, i === result.length - 1)
+  })
 }
 
 executeCommandLine().then(() => {
   console.log('files2text success.')
-}, error => {
+}, (error: unknown) => {
   if (error instanceof Error) {
     console.log(error.message)
   } else {
